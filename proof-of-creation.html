@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proof of Creation: From Mining Bitcoin to Mining Life | 神农地球村</title>
+    <meta name="description" content="A manifesto for decentralized health and community. From Bitcoin miners to life miners.">
+    <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            --primary-orange: #F7931A;
+            --primary-dark: #1a1a2e;
+            --primary-light: #f5f5f5;
+            --accent-green: #27ae60;
+            --accent-blue: #3498db;
+            --text-dark: #333;
+            --text-light: #f0f0f0;
+            --bg-dark: #0d0d1a;
+            --bg-card: #1a1a2e;
+            --font-size-base: 18px;
+            --font-size-large: 22px;
+            --font-size-xl: 28px;
+            --line-height: 1.8;
+        }
+
+        /* ===== Base Reset ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: var(--font-size-base);
+            line-height: var(--line-height);
+            color: var(--text-light);
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1a3e 100%);
+            min-height: 100vh;
+        }
+
+        /* ===== Language Toggle ===== */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 8px;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 12px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--primary-orange);
+            background: transparent;
+            color: var(--primary-orange);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-orange);
+            color: var(--bg-dark);
+        }
+
+        .lang-btn:hover {
+            background: rgba(247, 147, 26, 0.2);
+        }
+
+        /* ===== Container ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 20px 60px;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, rgba(247, 147, 26, 0.1) 0%, transparent 100%);
+            border-radius: 20px;
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(247, 147, 26, 0.3);
+        }
+
+        .hero .subtitle {
+            font-size: var(--font-size-large);
+            color: var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        .draft-badge {
+            display: inline-block;
+            background: rgba(247, 147, 26, 0.2);
+            border: 1px solid var(--primary-orange);
+            color: var(--primary-orange);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        /* ===== Content Sections ===== */
+        .section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(247, 147, 26, 0.1);
+        }
+
+        .section h2 {
+            color: var(--primary-orange);
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(247, 147, 26, 0.3);
+        }
+
+        .section p {
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        /* ===== Highlight Box ===== */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.15) 0%, rgba(39, 174, 96, 0.05) 100%);
+            border-left: 4px solid var(--accent-green);
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .highlight-box strong {
+            color: var(--accent-green);
+        }
+
+        /* ===== Quote Box ===== */
+        .quote-box {
+            background: linear-gradient(135deg, rgba(247, 147, 26, 0.15) 0%, rgba(247, 147, 26, 0.05) 100%);
+            border-left: 4px solid var(--primary-orange);
+            padding: 20px 25px;
+            margin: 25px 0;
+            font-style: italic;
+            border-radius: 0 12px 12px 0;
+        }
+
+        /* ===== Comparison Table ===== */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 16px;
+        }
+
+        .comparison-table th {
+            background: var(--primary-orange);
+            color: var(--bg-dark);
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(247, 147, 26, 0.1);
+        }
+
+        /* ===== CTA Section ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-orange), #e67e22);
+            border-radius: 16px;
+            padding: 50px 35px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-section h2 {
+            color: var(--bg-dark);
+            font-size: 2em;
+            margin-bottom: 15px;
+            border: none;
+        }
+
+        .cta-section p {
+            color: var(--bg-dark);
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+
+        /* ===== Steps List ===== */
+        .steps-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .steps-list li {
+            counter-increment: step-counter;
+            padding: 15px 15px 15px 60px;
+            position: relative;
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+        }
+
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35px;
+            height: 35px;
+            background: var(--primary-orange);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* ===== Disclaimer ===== */
+        .disclaimer {
+            background: rgba(231, 76, 60, 0.15);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        .disclaimer h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer a {
+            color: var(--primary-orange);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-green);
+            text-decoration: underline;
+        }
+
+        .email-link {
+            display: inline-block;
+            background: var(--primary-orange);
+            color: var(--bg-dark);
+            padding: 12px 25px;
+            border-radius: 25px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .email-link:hover {
+            background: var(--accent-green);
+            text-decoration: none;
+        }
+
+        /* ===== Crypto Theme Elements ===== */
+        .crypto-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f7931a, #e67e22);
+            color: var(--bg-dark);
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        /* ===== Three Phases ===== */
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .phase-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .phase-card h3 {
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+
+        .phase-card .phase-num {
+            font-size: 2.5em;
+            color: var(--primary-orange);
+            margin-bottom: 10px;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 25px 20px;
+            }
+
+            .comparison-table {
+                font-size: 14px;
+            }
+
+            .comparison-table th, .comparison-table td {
+                padding: 10px;
+            }
+
+            .lang-toggle {
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        /* ===== Hidden Content for Language Switch ===== */
+        .cn-content {
+            display: none;
+        }
+
+        body.lang-cn .en-content {
+            display: none;
+        }
+
+        body.lang-cn .cn-content {
+            display: block;
+        }
+    </style>
+</head>
+<body class="en-content">
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-btn active" onclick="switchLang('en')">EN</button>
+        <button class="lang-btn" onclick="switchLang('cn')">中文</button>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Proof of Creation<span class="crypto-badge">DRAFT</span></h1>
+            <p class="subtitle">From Mining Bitcoin to Mining Life</p>
+            <p style="font-size: 1.1em; color: #ccc;">神农地球村宣言 — 给每一个相信去中心化的人</p>
+            <span class="draft-badge">⚠️ This is a draft for community review</span>
+        </div>
+
+        <!-- Problem Section -->
+        <div class="section">
+            <h2>🛠️ The Problem We're Solving</h2>
+            <p>You know the feeling.</p>
+            <p>You've watched the hashrate charts at 3 AM. You've calculated your electricity costs down to the decimal. You've seen good miners go bankrupt after a halving. You've felt the isolation—either the loneliness of holding while everyone else sells, or the anxiety of watching your investment bleed.</p>
+            
+            <div class="highlight-box">
+                <strong>2024 was brutal.</strong> The halving hit hard. 15-20% of miners went underwater. The big players pivoted to AI. The small ones? They're still looking for a way out.
+            </div>
+
+            <p>And here's the thing nobody talks about: <strong>your health.</strong></p>
+            <p>You're burning out. You're stressed. You're sitting too long, sleeping too little, eating whatever's convenient. You've optimized your mining operation to perfection—but what about your body? Your mind? Your actual life?</p>
+            
+            <div class="quote-box">
+                "We built Bitcoin to escape centralized control. But in the process, did we lose control of something else?"
+            </div>
+        </div>
+
+        <!-- Thesis Section -->
+        <div class="section">
+            <h2>💡 The Proof of Creation Thesis</h2>
+            <p>Here's what we believe:</p>
+            <p><strong>Nakamoto solved a beautiful problem.</strong> Proof of Work aligned self-interest with collective benefit. You mine for profit—but your work also secures the network for everyone. Selfish behavior became cooperative output.</p>
+            
+            <div class="highlight-box">
+                <strong>中本聪证明：自利行为可以自动利他。</strong><br>
+                <em>Nakamoto proved: selfish behavior can automatically benefit others.</em>
+            </div>
+
+            <p>We believe <strong>the same logic can extend beyond money.</strong></p>
+            <p>Your body is a node. Your health is the network. Your daily choices are your work.</p>
+            <p><strong>Proof of Creation</strong> is what happens when you apply Bitcoin's logic to life itself:</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Bitcoin Concept</th>
+                        <th>Proof of Creation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Proof of Work</td>
+                        <td><strong>Proof of Creation</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Block Reward</td>
+                        <td>10% Lifetime Share</td>
+                    </tr>
+                    <tr>
+                        <td>Code is Law</td>
+                        <td>Smart Contract Auto-Distribution</td>
+                    </tr>
+                    <tr>
+                        <td>Decentralized Governance</td>
+                        <td>Three-Phase Community Autonomy</td>
+                    </tr>
+                    <tr>
+                        <td>HODL</td>
+                        <td><strong>Eat well. Sleep well.</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Pool Creator</td>
+                        <td>Project Founder (10% forever)</td>
+                    </tr>
+                    <tr>
+                        <td>Miners</td>
+                        <td>Contributors (70%)</td>
+                    </tr>
+                    <tr>
+                        <td>Network Maintenance Fee</td>
+                        <td>Public Welfare Fund (20%)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Practice Section -->
+        <div class="section">
+            <h2>⚙️ What Does This Mean in Practice?</h2>
+            
+            <h3 style="color: var(--accent-green); margin: 20px 0 15px;">10% Lifetime Share — The Founder's Reward</h3>
+            <p>In Bitcoin, Satoshi still has millions of coins. They created the system; they benefit from it.</p>
+            <p>In Proof of Creation, <strong>any project initiator gets 10%—forever.</strong> You start something, you benefit from it. No hidden equity. No dilution. Just code saying: "You started this. You own this."</p>
+            
+            <div class="highlight-box">
+                <strong>10%永享</strong> = 发起人激励 = 长期主义的保证
+            </div>
+
+            <h3 style="color: var(--accent-green); margin: 20px 0 15px;">70% to Contributors — The Miners' Cut</h3>
+            <p>In Bitcoin, miners do the work and get the bulk of the reward.</p>
+            <p>In Proof of Creation, <strong>70% goes to whoever does the work.</strong> Whether it's cooking, coding, creating, or caring—those who contribute get the lion's share.</p>
+            
+            <div class="highlight-box">
+                <strong>70%给执行人</strong> = 矿工经济 = 干活的人拿大头
+            </div>
+
+            <h3 style="color: var(--accent-green); margin: 20px 0 15px;">20% Public Welfare Fund — The Network Fee</h3>
+            <p>In Bitcoin, miners pay a small fee to keep the network alive.</p>
+            <p>In Proof of Creation, <strong>20% goes to a welfare fund that protects every member.</strong></p>
+            <p>This isn't charity. <strong>This is insurance.</strong></p>
+            <p>When you're young and healthy, you're contributing. When you're old or sick or struggling, the fund is there. You're paying for your future self.</p>
+            
+            <div class="highlight-box">
+                <strong>20%公益基金</strong> = 互助保险 = 既利他也自保
+            </div>
+        </div>
+
+        <!-- Tokens Section -->
+        <div class="section">
+            <h2>🔒 But What About the Tokens?</h2>
+            <p>Here's the part where people want to pull out their wallets.</p>
+            <p style="font-size: 1.3em; text-align: center; color: #e74c3c; margin: 20px 0;"><strong>No.</strong></p>
+            <p>We don't have a token. We're not doing an ICO. We're not launching on any public chain.</p>
+            
+            <div class="highlight-box">
+                <strong>积分 (Credits) ≠ 币 (Coins)</strong>
+            </div>
+
+            <p>Our credits are:</p>
+            <ul style="margin-left: 20px; margin-top: 15px;">
+                <li style="margin-bottom: 10px;"><strong>Recognition</strong> — Your contribution is recorded and valued</li>
+                <li style="margin-bottom: 10px;"><strong>Survival Guarantee</strong> — When you can't contribute anymore, the community provides</li>
+                <li><strong>Global Safety Net</strong> — Cross-border, no-bank-required, community-backed support</li>
+            </ul>
+            
+            <div class="quote-box">
+                Think of it like your mining pool's loyalty program—but for your actual life. Not tradeable, not speculative, but <strong>meaningful.</strong>
+            </div>
+        </div>
+
+        <!-- Three Phases Section -->
+        <div class="section">
+            <h2>🚀 The Three-Phase Evolution</h2>
+            <p>Just like Bitcoin didn't become Bitcoin in a day, <strong>Proof of Creation grows with you:</strong></p>
+
+            <div class="phases-grid">
+                <div class="phase-card">
+                    <div class="phase-num">1</div>
+                    <h3>Phase 1: Founding</h3>
+                    <p style="color: #aaa; font-size: 14px;">(Now)</p>
+                    <p>Core team builds infrastructure. Early community shapes governance.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-num">2</div>
+                    <h3>Phase 2: Transition</h3>
+                    <p style="color: #aaa; font-size: 14px;">(3-5 Years)</p>
+                    <p>Leadership steps back. Community takes governance.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-num">3</div>
+                    <h3>Phase 3: Autonomy</h3>
+                    <p style="color: #aaa; font-size: 14px;">(5+ Years)</p>
+                    <p>Fully decentralized. Self-sustaining. Community owns itself.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>三阶段社区自治</strong> = 从创始人驱动到社区驱动到完全自治
+            </div>
+        </div>
+
+        <!-- To Miners Section -->
+        <div class="section">
+            <h2>⛏️ To the Miners</h2>
+            <p>You already understand something most people don't.</p>
+            <ul style="margin-left: 20px; margin: 20px 0;">
+                <li style="margin-bottom: 10px;">You understand that <strong>work has value beyond the paycheck.</strong></li>
+                <li style="margin-bottom: 10px;">You understand that <strong>aligned incentives create systems that survive.</strong></li>
+                <li>You understand that <strong>the best networks are the ones where everyone benefits.</strong></li>
+            </ul>
+            
+            <p>You've proven you can trust code.</p>
+            <p style="font-size: 1.3em; color: var(--primary-orange); margin: 20px 0;"><strong>Now trust your community.</strong></p>
+            
+            <p>Because here's what Bitcoin taught us: the strongest networks aren't built by governments or corporations. They're built by people who believe in each other.</p>
+            
+            <div class="quote-box">
+                The Proof of Creation isn't just a project. It's a proof-of-concept for <strong>decentralized health, decentralized care, and decentralized community.</strong>
+            </div>
+        </div>
+
+        <!-- Promise Section -->
+        <div class="section">
+            <h2>🤝 The Promise</h2>
+            <p>In Bitcoin, there's a famous saying: <strong>"Not your keys, not your coins."</strong></p>
+            <p>In Proof of Creation, we say: <strong>"Not your community, not your health."</strong></p>
+            <p>Your health isn't something you outsource to doctors and insurance companies. It's something you build into your daily life, your relationships, your community.</p>
+            
+            <div style="text-align: center; margin: 40px 0;">
+                <p style="font-size: 1.5em; color: var(--accent-green);">"活着有人管，走了有人念。"</p>
+                <p style="color: #aaa; margin-top: 10px;">Live, and someone will care for you. Leave, and someone will remember you.</p>
+            </div>
+
+            <p>That's the promise of decentralized community. That's what we're building.</p>
+        </div>
+
+        <!-- How to Participate -->
+        <div class="section">
+            <h2>🤲 How to Participate</h2>
+            <p>This is a community project. <strong>We're building this together.</strong></p>
+            
+            <ul class="steps-list">
+                <li><strong>Read and review</strong> this manifesto</li>
+                <li><strong>Share your feedback</strong> — submit issues, PRs, or email us</li>
+                <li><strong>Spread the word</strong> — share with fellow community members</li>
+                <li><strong>Start a local node</strong> — organize a Proof of Creation meetup</li>
+                <li><strong>Build with us</strong> — contribute your skills, your ideas, your energy</li>
+            </ul>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>You've Proven You Can Trust Code.</h2>
+            <p>Now Trust Your Community.</p>
+            <p style="font-size: 0.9em; opacity: 0.8;">Proof of Creation is calling for builders, HODLers, and true believers.<br>The network is waiting.</p>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="disclaimer">
+            <h3>⚠️ Disclaimer / 免责声明</h3>
+            <p><strong>Disclaimer:</strong> This manifesto describes a concept for community-based mutual support. Participation is voluntary. Credits are not financial products, cannot be traded, and do not represent ownership. Health-related activities described may help support general well-being but are not medical advice. Always consult healthcare professionals for medical decisions.</p>
+            <p style="margin-top: 15px;"><strong>免责声明：</strong> 本宣言描述的是一个社区互助概念。参与是自愿的。积分不是金融产品，不可交易，不代表所有权。文中提到的健康活动可能有助于支持一般健康，但不是医疗建议。医疗决策请咨询专业人士。</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>神农地球村 | Shennong Earth Village</strong></p>
+            <a href="mailto:1359554548@qq.com" class="email-link">📧 1359554548@qq.com</a>
+            <p style="margin-top: 20px; font-size: 14px; color: #888;">
+                Version: Draft v0.1 | License: CC BY-SA 4.0<br>
+                <a href="https://github.com/shennong-earth-village/proof-of-creation">View on GitHub</a> | 
+                <a href="https://gitee.com/shennong-earth-village/proof-of-creation">View on Gitee</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            document.body.className = lang + '-content';
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase() === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            localStorage.setItem('proof-of-creation-lang', lang);
+        }
+
+        // Load saved language preference
+        const savedLang = localStorage.getItem('proof-of-creation-lang');
+        if (savedLang) {
+            switchLang(savedLang);
+        }
+    </script>
+</body>
+</html>
